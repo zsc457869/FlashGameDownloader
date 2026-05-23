@@ -6,6 +6,8 @@
 
 python版本3.7以上，安装requests
 
+[使用说明](使用说明.pdf)
+
 打包成exe：
 
 ```bash
