@@ -1,0 +1,24 @@
+name: Build-Windows
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+    build:
+        runs-on: windows-latest
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v6
+        - name: Install Deps
+          run: pip install requests pyinstaller
+        - name: Build
+          run: pyinstaller --name="MiniGameDownloader" --onefile --windowed --icon="1.ico" main.py
+        - name: Upload to Github Acitons
+          uses: actions/upload-artifact@v7
+          with:
+            name: MiniGameDownloader
+            path: dist/MiniGameDownloader.exe
+        
